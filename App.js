@@ -10,7 +10,7 @@ export default function App() {
 
   const changeFlower=()=>{
     chFlower('lily')
-    console.log('變為另外一種花')
+    console.log('變為另外一種花') 
   }
 
   return (
