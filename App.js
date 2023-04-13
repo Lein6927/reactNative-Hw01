@@ -1,6 +1,8 @@
+import Restart from 'react-native-restart';//重啟應用程序
+//
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet,TouchableOpacity } from 'react-native';
-//import { Button } from 'react-native-web';
+import { Button } from 'react-native-web';
 
 const InputLengthCheck = () => {
   const [inputValue, setInputValue] = useState('');
@@ -19,7 +21,10 @@ const InputLengthCheck = () => {
       alert('註冊成功');
       // 在這裡執行表單提交的相關邏輯
     }
+    
   };
+
+  
 
   return (
     <View style={styles.container}>
@@ -30,8 +35,8 @@ const InputLengthCheck = () => {
       />
       <TouchableOpacity style={styles.button} title="送出" onPress={handleSubmit}>送出</TouchableOpacity>
       {/*<Button style={styles.button} title="送出" onPress={handleSubmit} >*/}
-      
       {error ? <Text style={{ color: 'red' }}>{error}</Text> : null}
+
     </View>
   );
 };
@@ -51,8 +56,8 @@ const styles = StyleSheet.create({
   //輸入框
   inputText: {
     borderWidth: 1,
-    margin: '10px',
-    height: '20px',
+    margin: 10 ,
+    height: 20,
     border: '1px solid #555',
     borderRadius: '4px',
     width: '25%', // 設定輸入框寬度為父容器的80%
@@ -63,10 +68,10 @@ const styles = StyleSheet.create({
     color:'#FFF',
     textAlign:'center',
     //verticalAlign:'middle',
-    lineHeight:10,
+    lineHeight: 10,
     padding: 10,
     height: '30px',
-    borderRadius: 5,
+    borderRadius: '5',
     marginHorizontal: 20, // 設定按鈕間的間距
     borderRadius: '4px',
     backgroundColor: '#10a2c7',
