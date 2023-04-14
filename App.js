@@ -1,7 +1,7 @@
 import Restart from 'react-native-restart';//重啟應用程序
 //
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet,TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet,TouchableOpacity,Image } from 'react-native';
 import { Button } from 'react-native-web';
 
 const InputLengthCheck = () => {
