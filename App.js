@@ -1,47 +1,53 @@
-import Restart from 'react-native-restart';//重啟應用程序
-//
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet,TouchableOpacity,Image } from 'react-native';
-import { Button } from 'react-native-web';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, } from 'react-native';
+//import { Button } from 'react-native-web';
 
-const InputLengthCheck = () => {
-  const [inputValue, setInputValue] = useState('');
+export default function App() {
+  const [inputValue, setInputValue] = useState(''); //輸入框
   const [error, setError] = useState('');
 
-  const handleInputChange = (text) => {
-    setInputValue(text);
-  };
-
   const handleSubmit = () => {
-    if (inputValue.length !== 10) {
-      setError('請輸入正確的電話號碼');
-      alert('請輸入正確的電話號碼');
+    const phone=/^09\d{8}$/;//^09為開頭+後面要8碼
+    if (!phone.test(inputValue)) {
+      setError('請輸入正確的手機號碼');
+      alert('請輸入正確的手機號碼');
+      console.log('錯誤，請輸入正確的電話資訊')
     } else {
       setError('');
-      alert('註冊成功');
+      alert('預約成功');
       // 在這裡執行表單提交的相關邏輯
+      console.log('成功')
     }
-    
   };
 
-  
 
   return (
     <View style={styles.container}>
-      <Text>請輸入您的電話號碼?</Text>
-      <TextInput style={styles.inputText} onChangeText={handleInputChange}
+      <Text>請輸入您的手機號碼?</Text>
+      <TextInput
+        style={styles.inputText}
         value={inputValue}
-        keyboardType="numeric"
+        onChangeText={(text) => setInputValue(text)}
+      //keyboardType="numeric"
       />
-      <TouchableOpacity style={styles.button} title="送出" onPress={handleSubmit}>送出</TouchableOpacity>
-      {/*<Button style={styles.button} title="送出" onPress={handleSubmit} >*/}
-      {error ? <Text style={{ color: 'red' }}>{error}</Text> : null}
+      
+      {error ? <Text style={styles.error}>{error}</Text> : null}
+      
+      <TouchableOpacity
+        style={styles.button}
+        title="送出"
+        onPress={handleSubmit}>
+        <Text style={styles.buttonText}>送出</Text>
+
+      </TouchableOpacity>
+
+
 
     </View>
   );
+
 };
 
-export default InputLengthCheck;
 //style 外觀
 const styles = StyleSheet.create({
   container: {
@@ -56,7 +62,7 @@ const styles = StyleSheet.create({
   //輸入框
   inputText: {
     borderWidth: 1,
-    margin: 10 ,
+    margin: 10,
     height: 20,
     border: '1px solid #555',
     borderRadius: '4px',
@@ -64,17 +70,22 @@ const styles = StyleSheet.create({
     marginBottom: 10, // 設定輸入框和按鈕之間的間距
   },
   button: {
-    fontSize:20,
-    color:'#FFF',
-    textAlign:'center',
-    //verticalAlign:'middle',
-    lineHeight: 10,
+    textAlign: 'center',
     padding: 10,
     height: '30px',
     borderRadius: '5',
     marginHorizontal: 20, // 設定按鈕間的間距
     borderRadius: '4px',
     backgroundColor: '#10a2c7',
-    
+
   },
-})
+  buttonText: {
+    color: '#FFF',
+    fontSize: 20,
+    lineHeight: 10,//設定文字格線
+  },
+  error: {
+    color: 'red',
+    marginBottom: 20,
+  },
+});
