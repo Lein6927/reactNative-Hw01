@@ -18,8 +18,19 @@
 ![image](https://user-images.githubusercontent.com/33750244/233247439-15f3d9ef-0f6e-4db4-a0f6-1570dd64b4c5.png)
 
 
+---
+---
+## 程式碼備註
+#### 判斷是否符合手機格式
+inputValue 設定為輸入框，設定phone要台灣手機格式，09開頭後面固定+8碼，跑if/else迴圈，不符合就跳出迴圈。
 
+#### 匯入字型
+useEffect() : Hook只在首次渲染時執行一次，避免重複加載，用來定義字體。
+useState():會在每次渲染時都執行，導致每次執行都會重複加載字體。
+因此使用 useEffect() 來加載
 
+loadFonts 函數:用來載入自定義字體。該函數使用了。
+async/await :async function用來定義一個非同步函式，讓這個函式本體是屬於非同步，但內部“以同步的方式運行非同步”的程式碼。 await 則是可以暫停非同步函式的運行，這裡用來確認字體有成功載入，再執行下一步。
 
 
 
