@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import *as Font from 'expo-font';
 
 //import{ImageComponent,ImageBackground}from 'react-native';
 //import { Image } from 'react-native-web';
@@ -7,15 +8,13 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'reac
 export default function App() {
   const [inputValue, setInputValue] = useState(''); //輸入框
   const [error, setError] = useState('');
-  //const[picLogo,setpicLogo]=useState('');
 
-  //const imgCup=useState(require('./assets/coffee-04.jpg'));
 
   const handleSubmit = () => {
     const phone = /^09\d{8}$/;//^09為開頭+後面要8碼
     if (!phone.test(inputValue)) {
       setError('請輸入正確的手機號碼');
-      alert('請輸入正確的手機號碼');
+      alert('請輸入您的手機號碼');
       console.log('錯誤，請輸入正確的電話資訊')
     } else {
       setError('');
@@ -25,18 +24,28 @@ export default function App() {
     }
   };
   //require('./assets/images/coffee.png')
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        'jf-font': require('./assets/fonts/jf-openhuninn-1.1.ttf'),
+      });
+    }
+    loadFonts();
+  }, []);
 
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: 'https://images.plurk.com/3v2pCeK4ABEs7wg3dPjZwI.png' }}></Image>
 
-      <Text style={styles.h2Text}>來一杯咖啡吧</Text>
-      <Text style={styles.pText}>歡迎光臨，如要預約，請填寫您的手機號碼，</Text>
-      <Text style={styles.pText}>方便幫您安排座位，謝謝您</Text>
+      <Text style={[styles.h2Text, { fontFamily: 'jf-font' }]}>來一杯咖啡吧</Text>
+      <Text style={[styles.pText, { fontFamily: 'jf-font' }]}>歡迎光臨，來一杯咖啡吧</Text>
+      <Text style={[styles.pText,{ fontFamily: 'jf-font' }]}>如要預約請填寫您的手機號碼，謝謝您</Text>
       <TextInput
+        title='手機號碼'
         style={styles.inputText}
         value={inputValue}
         onChangeText={(text) => setInputValue(text)}
+        defaultValue='輸入手機號碼'
       //keyboardType="numeric"
       />
 
@@ -73,11 +82,12 @@ const styles = StyleSheet.create({
     color: '#A6695F',
     fontSize: 30,
     fontFamily: '',
-    marginBottom:5,
+    marginBottom: 5,
+
   },
-  pText:{ //內文文章
-    color:'#7F4F21',
-    fontSize:18,
+  pText: { //內文文章
+    color: '#7F4F21',
+    fontSize: 18,
   },
 
   image: {
@@ -89,8 +99,8 @@ const styles = StyleSheet.create({
   inputText: {   //輸入框
     borderWidth: 1,
     margin: 10,
-    marginTop:20,
-    height: 25,
+    marginTop: 20,
+    height: 30,
     //width:10,
     border: '1px solid #555',
     borderRadius: '4px',
@@ -100,9 +110,9 @@ const styles = StyleSheet.create({
   button: {
     textAlign: 'center',
     padding: 10,
-    marginTop:10,
+    marginTop: 10,
     height: 40,
-    width:100,
+    width: 100,
     borderRadius: 8,
     marginHorizontal: 20, // 設定按鈕間的間距
     //borderRadius: '4px',
