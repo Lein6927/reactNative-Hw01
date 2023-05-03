@@ -14,7 +14,7 @@ export default function App() {
     const phone = /^09\d{8}$/;//^09為開頭+後面要8碼
     if (!phone.test(inputValue)) {
       setError('請輸入正確的手機號碼');
-      alert('請輸入您的手機號碼');
+      alert('請輸入正確的手機號碼');
       console.log('錯誤，請輸入正確的電話資訊')
     } else {
       setError('');
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     //width:10,
     border: '1px solid #555',
     borderRadius: 4,
-    width: '50%', // 設定輸入框寬度為父容器的80%
+    width: '60%', // 設定輸入框寬度為父容器的80%
     marginBottom: 10, // 設定輸入框和按鈕之間的間距
   },
   button: {
