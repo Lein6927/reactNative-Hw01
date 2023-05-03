@@ -39,7 +39,7 @@ export default function App() {
 
       <Text style={[styles.h2Text, { fontFamily: 'jf-font' }]}>來一杯咖啡吧</Text>
       <Text style={[styles.pText, { fontFamily: 'jf-font' }]}>歡迎光臨，來一杯咖啡吧</Text>
-      <Text style={[styles.pText,{ fontFamily: 'jf-font' }]}>如要預約請填寫您的手機號碼，謝謝您</Text>
+      <Text style={[styles.pText, { fontFamily: 'jf-font' }]}>如要預約請填寫您的手機號碼，謝謝您</Text>
       <TextInput
         title='手機號碼'
         style={styles.inputText}
@@ -49,7 +49,7 @@ export default function App() {
       //keyboardType="numeric"
       />
 
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+      <Text style={[styles.pText, { fontFamily: 'jf-font' }]}>您的手機號碼:{inputValue}</Text>
 
       <TouchableOpacity
         style={styles.button}
@@ -59,7 +59,7 @@ export default function App() {
 
       </TouchableOpacity>
 
-
+      {error ? <Text style={styles.error}>{error}</Text> : null}
 
     </View>
   );
@@ -69,7 +69,7 @@ export default function App() {
 //style 外觀
 const styles = StyleSheet.create({
   container: {
-    width: 300,
+    //width: 300,
     flex: 1,
     //flexDirection: 'row',
     backgroundColor: '#FFF',
@@ -103,13 +103,13 @@ const styles = StyleSheet.create({
     height: 30,
     //width:10,
     border: '1px solid #555',
-    borderRadius: '4px',
-    width: '20%', // 設定輸入框寬度為父容器的80%
+    borderRadius: 4,
+    width: '50%', // 設定輸入框寬度為父容器的80%
     marginBottom: 10, // 設定輸入框和按鈕之間的間距
   },
   button: {
     textAlign: 'center',
-    padding: 10,
+    padding: 5,
     marginTop: 10,
     height: 40,
     width: 100,
@@ -119,9 +119,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#A6695F',
   },
   buttonText: {
+    textAlign: 'center',
     color: '#FFF',
     fontSize: 20,
-    lineHeight: 18,//設定文字格線
+    //lineHeight: 18,//設定文字格線
   },
   error: {
     color: 'red',
